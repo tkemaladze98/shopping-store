@@ -1,0 +1,62 @@
+<form
+  [formGroup]="signupForm"
+  (ngSubmit)="onSubmit()"
+  class="col-md-6 m-auto mt-5"
+>
+  <div class="mb-3">
+    <label for="name" class="form-label">Enter Name</label>
+    <input formControlName="name" type="text" class="form-control" id="name" />
+  </div>
+  <div class="mb-3">
+    <label for="surname" class="form-label">Enter Surname</label>
+    <input
+      type="text"
+      class="form-control"
+      id="surname"
+      formControlName="surname"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">Email address</label>
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      placeholder="example@example.com"
+      formControlName="email"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Enter Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      formControlName="password"
+      #password
+      [(ngModel)]="userPassword"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="confirmpassword" class="form-label"
+      >Confirm Your Password</label
+    >
+    <input
+      type="password"
+      class="form-control"
+      id="confirmpassword"
+      formControlName="confirmpassword"
+      #confirmpassword
+      [(ngModel)]="userConfirmpassword"
+    />
+  </div>
+  <div class="col-md-6 m-auto">
+    <button
+      [disabled]="!signupForm.valid || (userPassword !== userConfirmpassword)"
+      class="btn btn-primary w-100"
+      type="submit"
+    >
+      Sign In
+    </button>
+  </div>
+</form>

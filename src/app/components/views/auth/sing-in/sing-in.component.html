@@ -1,0 +1,36 @@
+<form #form="ngForm" class="col-md-6 m-auto mt-5" (ngSubmit)="onSubmit(form)">
+  <div class="mb-3">
+    <label for="email" class="form-label">Email address</label>
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      placeholder="example@example.com"
+      email
+      ngModel
+      name="email"
+      required
+    />
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      minlength="6"
+      ngModel
+      name="password"
+      required
+    />
+  </div>
+  <div class="col-md-6 m-auto">
+    <button
+      [disabled]="!form.valid"
+      class="btn btn-primary w-100"
+      type="submit"
+    >
+      Sign In
+    </button>
+  </div>
+</form>

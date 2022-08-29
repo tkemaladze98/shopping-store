@@ -1,0 +1,13 @@
+.navbar {
+  background-color: burlywood;
+  .auth-btns {
+    width: 15%;
+    justify-content: space-between;
+  }
+  .active {
+    border-bottom: 2px solid blue;
+    a {
+      color: blue;
+    }
+  }
+}
