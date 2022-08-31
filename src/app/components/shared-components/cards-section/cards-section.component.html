@@ -1,0 +1,10 @@
+<section>
+  <h1 *ngIf="products.length > 0">{{ title }}</h1>
+  <h1 *ngIf="products.length === 0">Here Is No Products Yet</h1>
+  <app-product-card
+    *ngFor="let product of products; let productId = index"
+    [product]="product"
+    [currentUserEmail]="currentUserEmail"
+    [productId]="productId"
+  ></app-product-card>
+</section>

@@ -1,0 +1,16 @@
+.images-div{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  h4{
+    width: 100%;
+    text-align: center;
+  }
+  img{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin: 0px 5px;
+    cursor: pointer;
+  }
+}

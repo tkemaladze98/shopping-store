@@ -1,0 +1,58 @@
+<div class="card" style="width: 18rem">
+  <div
+    id="carouselExampleControls{{ productId }}"
+    class="carousel slide"
+    data-bs-ride="carousel"
+  >
+    <div class="carousel-inner">
+      <div
+        class="carousel-item"
+        [ngClass]="i === 0 ? 'active' : ''"
+        *ngFor="let image of product.images; let i = index"
+      >
+        <img [src]="image" class="card-img-top images" alt="..." />
+      </div>
+    </div>
+    <a
+      class="carousel-control-prev"
+      type="button"
+      href="#carouselExampleControls{{ productId }}"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </a>
+    <a
+      class="carousel-control-next"
+      type="button"
+      href="#carouselExampleControls{{ productId }}"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </a>
+  </div>
+
+  <div class="card-body">
+    <h5 class="card-title">{{ product.name }}</h5>
+    <hr />
+    <p>{{ product.description }}</p>
+    <hr />
+    <p>{{ product.price }}$</p>
+    <p>{{ product.category }}</p>
+    <div class="buttons">
+      <a
+        *ngIf="product.author === currentUserEmail"
+        class="btn btn-danger"
+        (click)="onDelete(product.key)"
+        >Delete</a
+      >
+      <a
+        *ngIf="product.author === currentUserEmail"
+        class="btn btn-warning"
+        (click)="onEdit(product.key)"
+        >Edit</a
+      >
+    </div>
+  </div>
+</div>
