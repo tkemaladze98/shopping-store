@@ -1,8 +1,10 @@
 .navbar {
   background-color: burlywood;
   .auth-btns {
-    width: 15%;
-    justify-content: space-between;
+    justify-content: flex-end;
+    button {
+      margin: 0px 5px;
+    }
   }
   .active {
     border-bottom: 2px solid blue;
@@ -12,14 +14,14 @@
   }
 }
 
-.dropdown{
+.dropdown {
   cursor: pointer;
-  .dropdown-toggle{
+  .dropdown-toggle {
     color: black;
     text-decoration: none;
   }
 }
-.open ul{
+.open ul {
   display: block;
   right: 0px;
 }
