@@ -1,4 +1,9 @@
-<section>
+<div *ngIf="loading" class="spinner-wrapper">
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+<section *ngIf="!loading">
   <h1 *ngIf="products.length > 0">{{ title }}</h1>
   <h1 *ngIf="products.length === 0">Here Is No Products Yet</h1>
   <app-product-card

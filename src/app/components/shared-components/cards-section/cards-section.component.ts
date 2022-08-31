@@ -17,6 +17,7 @@ export class CardsSectionComponent implements OnInit {
   currentUserEmail: string;
   productSub: Subscription;
   userSub: Subscription;
+  loading: boolean = false;
   constructor(private store: Store<fromApp.AppState>) {}
 
   ngOnInit(): void {
@@ -39,6 +40,7 @@ export class CardsSectionComponent implements OnInit {
             return product.author === this.currentUserEmail;
           });
         }
+        this.loading = productState.loading;
       });
   }
 

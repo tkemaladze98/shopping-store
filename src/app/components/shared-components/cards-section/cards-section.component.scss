@@ -1,10 +1,21 @@
-section{
+section {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 20px;
 }
-h1{
+h1 {
   width: 100%;
   text-align: center;
+}
+.spinner-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  .spinner-border {
+    --bs-spinner-width: 5rem;
+    --bs-spinner-height: 5rem;
+    --bs-spinner-border-width: 0.5rem;
+  }
 }

@@ -5,10 +5,12 @@ import { createReducer, on, Action } from '@ngrx/store';
 
 export interface State {
   products: Product[];
+  loading: boolean;
 }
 
 const initialState: State = {
   products: [],
+  loading: false,
 };
 
 const _productReducer = createReducer(
@@ -17,12 +19,14 @@ const _productReducer = createReducer(
     return {
       ...state,
       products: [...state.products, action],
+      loading: false,
     };
   }),
   on(ProductActions.setProducts, (state, action) => {
     return {
       ...state,
       products: [...state.products, ...action.products],
+      loading: false,
     };
   }),
   on(ProductActions.deleteProduct, (state, action) => {
@@ -42,6 +46,18 @@ const _productReducer = createReducer(
         }
         return product;
       }),
+    };
+  }),
+  on(ProductActions.storeProductInBase, (state) => {
+    return {
+      ...state,
+      loading: true,
+    };
+  }),
+  on(ProductActions.fetchProducts, (state) => {
+    return {
+      ...state,
+      loading: true,
     };
   })
 );
