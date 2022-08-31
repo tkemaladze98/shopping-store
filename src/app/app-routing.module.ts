@@ -1,4 +1,4 @@
-import { Component, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AudioSystemsComponent } from './components/pages/audio-systems/audio-systems.component';
 import { ComputersAndAccsComponent } from './components/pages/computers-and-accs/computers-and-accs.component';
