@@ -1,4 +1,15 @@
-<form #form="ngForm" class="col-md-6 m-auto mt-5" (ngSubmit)="onSubmit(form)">
+<div
+  class="col-md-6 m-auto mt-5 alert alert-danger"
+  *ngIf="!loading && errorMessage"
+>
+  <strong>{{ errorMessage }}</strong>
+</div>
+<div *ngIf="loading" class="spinner-wrapper">
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+<form *ngIf="!loading" #form="ngForm" class="col-md-6 m-auto mt-5" (ngSubmit)="onSubmit(form)">
   <div class="mb-3">
     <label for="email" class="form-label">Email address</label>
     <input

@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import * as fromApp from '../../../../store/app-store.reducer';
+import * as AuthActions from '../store/auth.actions';
 
 @Component({
   selector: 'app-sing-up',
@@ -11,9 +14,19 @@ export class SingUpComponent implements OnInit {
   userPassword: string;
   userConfirmpassword: string;
   signupForm: FormGroup;
-  constructor(private http: HttpClient) {}
+  loading: boolean;
+  errorMessage: null | string;
+  constructor(
+    private http: HttpClient,
+    private store: Store<fromApp.AppState>
+  ) {}
 
   ngOnInit(): void {
+    this.store.dispatch(AuthActions.clearError())
+    this.store.select('auth').subscribe((authState) => {
+      this.loading = authState.loading;
+      this.errorMessage = authState.authError;
+    });
     this.signupForm = new FormGroup({
       name: new FormControl(null, [Validators.required]),
       surname: new FormControl(null, [Validators.required]),
@@ -28,16 +41,10 @@ export class SingUpComponent implements OnInit {
   onSubmit() {
     let email = this.signupForm.get('email').value;
     let password = this.signupForm.get('password').value;
-    this.http.post(
-      'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAImDwLD4ntL-iJeDgqr5H-SVqf4DwqaFA',
-      {
-        email: email,
-        password: password,
-        returnSecureToken: true,
-      }
-    ).subscribe(responseData => {
-      console.log(responseData)
-    });
+    this.store.dispatch(
+      AuthActions.signupStart({ email: email, password: password })
+    );
+    this.signupForm.reset();
   }
   confirmation(control: FormControl): { [s: string]: boolean } {
     if (control.value !== this.userPassword) {

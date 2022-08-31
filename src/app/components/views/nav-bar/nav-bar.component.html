@@ -18,7 +18,7 @@
           [routerLinkActiveOptions]="{ exact: true }"
           class="nav-item"
         >
-          <a routerLink="/" class="nav-link">Store</a>
+          <a routerLink="/" class="nav-link"><h3>Store</h3></a>
         </li>
         <li routerLinkActive="active" class="nav-item">
           <a routerLink="/mobiles" class="nav-link">Mobiles & Accessories</a>
@@ -35,7 +35,7 @@
           <a routerLink="/tv" class="nav-link">TV'S</a>
         </li>
       </ul>
-      <div class="d-flex auth-btns">
+      <div *ngIf="!userEmail" class="d-flex auth-btns">
         <button
           class="btn btn-outline-primary"
           type="button"
@@ -50,6 +50,23 @@
         >
           Sign-Up
         </button>
+      </div>
+      <div
+        class="dropdown"
+        [ngClass]="isOpen ? 'open' : ''"
+        (click)="onClick()"
+        *ngIf="userEmail"
+      >
+        <a class="dropdown-toggle">
+          {{ userEmail }} <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" (click)="goToMyProducts()">View My Products</a></li>
+          <!-- <li><a class="dropdown-item">Edit Profile</a></li> -->
+          <li><a class="dropdown-item" (click)="onDeleteProfile()">Delete Profile</a></li>
+          <li><a routerLink="/add-product" class="dropdown-item">Add Product</a></li>
+          <li><a class="dropdown-item" (click)="onLogOut()">Log Out</a></li>
+        </ul>
       </div>
     </div>
   </div>

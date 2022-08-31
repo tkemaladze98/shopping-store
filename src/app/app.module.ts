@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import * as fromApp from './store/app-store.reducer';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -16,6 +16,14 @@ import { SingUpComponent } from './components/views/auth/sing-up/sing-up.compone
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './components/views/auth/store/auth.effects';
+import { DropDownDirective } from './directives/drop-down.directive';
+import { AddProductComponent } from './components/views/add-product/add-product.component';
+import { ProductEffects } from './components/pages/home-page/store/products-store.effects';
+import { ProductCardComponent } from './components/shared-components/product-card/product-card.component';
+import { MyProductsComponent } from './components/views/my-products/my-products.component';
+import { CardsSectionComponent } from './components/shared-components/cards-section/cards-section.component';
+import { ProductEditComponent } from './components/views/product-edit/product-edit.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +36,12 @@ import { EffectsModule } from '@ngrx/effects';
     TvPageComponent,
     SingInComponent,
     SingUpComponent,
+    DropDownDirective,
+    AddProductComponent,
+    ProductCardComponent,
+    MyProductsComponent,
+    CardsSectionComponent,
+    ProductEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +50,7 @@ import { EffectsModule } from '@ngrx/effects';
     ReactiveFormsModule,
     HttpClientModule,
     StoreModule.forRoot(fromApp.appReducer),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([AuthEffects, ProductEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],

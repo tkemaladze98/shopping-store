@@ -11,3 +11,15 @@
     }
   }
 }
+
+.dropdown{
+  cursor: pointer;
+  .dropdown-toggle{
+    color: black;
+    text-decoration: none;
+  }
+}
+.open ul{
+  display: block;
+  right: 0px;
+}
