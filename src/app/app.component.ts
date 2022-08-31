@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import * as ProductAction from './components/pages/home-page/store/products-store.actions';
 import * as AuthActions from './components/views/auth/store/auth.actions';
@@ -12,10 +11,7 @@ import { Store } from '@ngrx/store';
 })
 export class AppComponent implements OnInit {
   title = 'shoppingStore';
-  constructor(
-    private http: HttpClient,
-    private store: Store<fromApp.AppState>
-  ) {}
+  constructor(private store: Store<fromApp.AppState>) {}
   ngOnInit(): void {
     this.store.dispatch(AuthActions.autoLogin());
     this.store.dispatch(ProductAction.fetchProducts());

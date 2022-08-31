@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
@@ -16,13 +15,10 @@ export class SingUpComponent implements OnInit {
   signupForm: FormGroup;
   loading: boolean;
   errorMessage: null | string;
-  constructor(
-    private http: HttpClient,
-    private store: Store<fromApp.AppState>
-  ) {}
+  constructor(private store: Store<fromApp.AppState>) {}
 
   ngOnInit(): void {
-    this.store.dispatch(AuthActions.clearError())
+    this.store.dispatch(AuthActions.clearError());
     this.store.select('auth').subscribe((authState) => {
       this.loading = authState.loading;
       this.errorMessage = authState.authError;
@@ -30,7 +26,7 @@ export class SingUpComponent implements OnInit {
     this.signupForm = new FormGroup({
       name: new FormControl(null, [Validators.required]),
       surname: new FormControl(null, [Validators.required]),
-      email: new FormControl(null, [Validators.required]),
+      email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [Validators.required]),
       confirmpassword: new FormControl(null, [
         Validators.required,

@@ -1,10 +1,8 @@
 import {
-  AfterContentInit,
   AfterViewInit,
   Component,
   Input,
   OnDestroy,
-  OnInit,
   ViewChild,
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -20,7 +18,7 @@ import * as ProductsActions from '../../pages/home-page/store/products-store.act
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.scss'],
 })
-export class AddProductComponent implements OnInit, OnDestroy, AfterViewInit {
+export class AddProductComponent implements OnDestroy, AfterViewInit {
   @Input() editingProduct: Product;
   @ViewChild('form', { static: false }) productForm: NgForm;
   loading: boolean = false;
@@ -28,7 +26,6 @@ export class AddProductComponent implements OnInit, OnDestroy, AfterViewInit {
   userSub: Subscription;
   constructor(private store: Store<formApp.AppState>, private router: Router) {}
 
-  ngOnInit(): void {}
   ngAfterViewInit(): void {
     if (this.editingProduct) {
       setTimeout(() => {

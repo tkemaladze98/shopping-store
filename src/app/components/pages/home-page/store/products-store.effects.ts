@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { map, switchMap, tap, withLatestFrom, of, take } from 'rxjs';
+import { map, switchMap } from 'rxjs';
 import { Product } from 'src/app/models/product.model';
 import * as ProductsActions from './products-store.actions';
 import * as fromApp from '../../../../store/app-store.reducer';

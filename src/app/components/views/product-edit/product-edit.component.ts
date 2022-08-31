@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { map, of, tap, switchMap } from 'rxjs';
+import { map, switchMap } from 'rxjs';
 import { Product } from 'src/app/models/product.model';
 import * as fromApp from '../../../store/app-store.reducer';
 
