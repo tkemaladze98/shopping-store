@@ -4,6 +4,7 @@ import { AudioSystemsComponent } from './components/pages/audio-systems/audio-sy
 import { ComputersAndAccsComponent } from './components/pages/computers-and-accs/computers-and-accs.component';
 import { HomePageComponent } from './components/pages/home-page/home-page.component';
 import { MobilesAndAccsComponent } from './components/pages/mobiles-and-accs/mobiles-and-accs.component';
+import { NotFoundComponent } from './components/pages/not-found/not-found.component';
 import { TvPageComponent } from './components/pages/tv-page/tv-page.component';
 import { AddProductComponent } from './components/views/add-product/add-product.component';
 import { AuthGuardGuard } from './components/views/auth/auth-guard.guard';
@@ -31,6 +32,7 @@ const routes: Routes = [
     component: MyProductsComponent,
     canActivate: [AuthGuardGuard],
   },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({

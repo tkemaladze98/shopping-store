@@ -24,6 +24,7 @@ import { ProductCardComponent } from './components/shared-components/product-car
 import { MyProductsComponent } from './components/views/my-products/my-products.component';
 import { CardsSectionComponent } from './components/shared-components/cards-section/cards-section.component';
 import { ProductEditComponent } from './components/views/product-edit/product-edit.component';
+import { NotFoundComponent } from './components/pages/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ProductEditComponent } from './components/views/product-edit/product-ed
     MyProductsComponent,
     CardsSectionComponent,
     ProductEditComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

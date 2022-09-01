@@ -1,11 +1,8 @@
-import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { Store } from '@ngrx/store';
 import { map, switchMap } from 'rxjs';
 import { Product } from 'src/app/models/product.model';
 import * as ProductsActions from './products-store.actions';
-import * as fromApp from '../../../../store/app-store.reducer';
 import { Injectable } from '@angular/core';
 
 @Injectable()
@@ -37,7 +34,8 @@ export class ProductEffects {
       switchMap(() => {
         return this.http
           .get<Product[]>(
-            'https://shopping-store-212a9-default-rtdb.europe-west1.firebasedatabase.app/products.json'
+            'https://shopping-store-212a9-default-rtdb.europe-west1.firebasedatabase.app/products.json',
+            { params: new HttpParams().set('print', 'pretty') }
           )
           .pipe(
             map((resData) => {
@@ -89,10 +87,5 @@ export class ProductEffects {
     );
   });
 
-  constructor(
-    private actions$: Actions,
-    private http: HttpClient,
-    private router: Router,
-    private store: Store<fromApp.AppState>
-  ) {}
+  constructor(private actions$: Actions, private http: HttpClient) {}
 }
