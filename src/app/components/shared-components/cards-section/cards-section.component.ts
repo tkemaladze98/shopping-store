@@ -24,6 +24,8 @@ export class CardsSectionComponent implements OnInit {
     this.userSub = this.store.select('auth').subscribe((authState) => {
       if (authState.user) {
         this.currentUserEmail = authState.user.email;
+      } else {
+        this.currentUserEmail = null;
       }
     });
     this.productSub = this.store
