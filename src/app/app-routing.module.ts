@@ -32,7 +32,7 @@ const routes: Routes = [
     component: MyProductsComponent,
     canActivate: [AuthGuardGuard],
   },
-  { path: '**', component: NotFoundComponent },
+  { path: '**', component: NotFoundComponent},
 ];
 
 @NgModule({
