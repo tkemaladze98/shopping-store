@@ -25,6 +25,10 @@ import { MyProductsComponent } from './components/views/my-products/my-products.
 import { CardsSectionComponent } from './components/shared-components/cards-section/cards-section.component';
 import { ProductEditComponent } from './components/views/product-edit/product-edit.component';
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
+import {
+  NgxGoogleAnalyticsModule,
+  NgxGoogleAnalyticsRouterModule,
+} from 'ngx-google-analytics';
 
 @NgModule({
   declarations: [
@@ -53,6 +57,8 @@ import { NotFoundComponent } from './components/pages/not-found/not-found.compon
     HttpClientModule,
     StoreModule.forRoot(fromApp.appReducer),
     EffectsModule.forRoot([AuthEffects, ProductEffects]),
+    NgxGoogleAnalyticsModule.forRoot('G-P3JDFCNQJ0'),
+    NgxGoogleAnalyticsRouterModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
